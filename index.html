@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparkling Minds Academy - Admission Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 style="background-color:gainsboro;">Sparkling Minds Academy</h1>
+            <p class="tagline">Nurturing Bright Futures</p>
+        </header>
+
+        <form id="admissionForm">
+            <section id="studentInfo">
+                <h2>Student Information</h2>
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate">Date of Birth:</label>
+                    <input type="date" id="birthDate" name="birthDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="gradeApplying">Applying for Grade:</label>
+                    <select id="gradeApplying" name="gradeApplying" required>
+                        <option value="">Select Grade</option>
+                        <option value="1">Grade 1</option>
+                        <option value="2">Grade 2</option>
+                        <option value="3">Grade 3</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="studentEmail">Student Email (Optional):</label>
+                    <input type="email" id="studentEmail" name="studentEmail">
+                </div>
+            </section>
+
+            <section id="parentInfo">
+                <h2>Parent/Guardian Information</h2>
+                <div class="form-group">
+                    <label for="parentName">Full Name:</label>
+                    <input type="text" id="parentName" name="parentName" required>
+                </div>
+                <div class="form-group">
+                    <label for="parentContact">Contact Number:</label>
+                    <input type="tel" id="parentContact" name="parentContact" required>
+                </div>
+                <div class="form-group">
+                    <label for="parentRelation">Relationship to Student:</label>
+                    <input type="text" id="parentRelation" name="parentRelation" placeholder="Mother, Father, Guardian" required>
+                </div>
+            </section>
+
+            <section id="address">
+                <h2>Contact Address</h2>
+                <div class="form-group">
+                    <label for="street">Street Address:</label>
+                    <input type="text" id="street" name="street" required>
+                </div>
+                <div class="form-group">
+                    <label for="cityArea">City/Area:</label>
+                    <input type="text" id="cityArea" name="cityArea" required>
+                </div>
+                <div class="form-group">
+                    <label for="postalCode">Postal Code:</label>
+                    <input type="text" id="postalCode" name="postalCode" required>
+                </div>
+            </section>
+
+            <section id="reviewSection">
+                <h2>Review Your Application</h2>
+                <div id="reviewContent">
+                    </div>
+            </section>
+
+            <div class="buttons">
+                <button type="button" onclick="showReview()">Review and Submit</button>
+                <button type="submit" style="display:none;">Submit Application</button>
+            </div>
+        </form>
+
+
+    </div>
+
+    <script>
+        function showReview() {
+    const fullName = document.getElementById('fullName').value;
+    const birthDate = document.getElementById('birthDate').value;
+    const gradeApplying = document.getElementById('gradeApplying').value;
+    const studentEmail = document.getElementById('studentEmail').value;
+    const parentName = document.getElementById('parentName').value;
+    const parentContact = document.getElementById('parentContact').value;
+    const parentRelation = document.getElementById('parentRelation').value;
+    const street = document.getElementById('street').value;
+    const cityArea = document.getElementById('cityArea').value;
+    const postalCode = document.getElementById('postalCode').value;
+
+    const reviewContent = document.getElementById('reviewContent');
+    reviewContent.innerHTML = `
+        <div class="review-item"><span class="review-label">Full Name:</span> ${fullName}</div>
+        <div class="review-item"><span class="review-label">Date of Birth:</span> ${birthDate}</div>
+        <div class="review-item"><span class="review-label">Applying for Grade:</span> ${gradeApplying}</div>
+        ${studentEmail ? `<div class="review-item"><span class="review-label">Student Email:</span> ${studentEmail}</div>` : ''}
+        <div class="review-item"><span class="review-label">Parent/Guardian Name:</span> ${parentName}</div>
+        <div class="review-item"><span class="review-label">Contact Number:</span> ${parentContact}</div>
+        <div class="review-item"><span class="review-label">Relationship to Student:</span> ${parentRelation}</div>
+        <div class="review-item"><span class="review-label">Street Address:</span> ${street}</div>
+        <div class="review-item"><span class="review-label">City/Area:</span> ${cityArea}</div>
+        <div class="review-item"><span class="review-label">Postal Code:</span> ${postalCode}</div>
+    `;
+
+    document.getElementById('reviewSection').style.display = 'block';
+    document.querySelector('.buttons button[type="submit"]').style.display = 'inline-block';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('reviewSection').style.display = 'none';
+    document.querySelector('.buttons button[type="submit"]').style.display = 'none';
+});
+    </script>
+</body>
+</html>
